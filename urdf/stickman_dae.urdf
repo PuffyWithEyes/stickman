@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="unnamed">
+
+    <link name="first_arm_engine">
+      <visual name="first_engine">
+        <origin xyz="0.64446 -0.06585 0" rpy="0 0 0.05532"/>
+        <geometry>
+          <cylinder radius="0.53716" length="6.2879"/>
+        </geometry>
+        <material name="Material.002"/>
+      </visual>
+    </link>
+
+    <link name="main_body">
+      <visual name="body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="../meshes/dae/Torus.003.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Material"/>
+      </visual>
+      <visual name="second_stick">
+        <origin xyz="0 0 -1.30813" rpy="-3.14159 0 0"/>
+        <geometry>
+          <mesh filename="../meshes/dae/Torus.005.dae" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="Material.001"/>
+      </visual>
+    </link>
+
+    <link name="main_engine">
+      <visual name="main_engine_part">
+        <origin xyz="-0.00264 0.00149 -0.33026" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.33116" length="6.46376"/>
+        </geometry>
+        <material name="Material"/>
+      </visual>
+    </link>
+
+    <link name="new_link">
+      <visual name="second_rack">
+        <origin xyz="0.87208 0 0" rpy="1.5708 0 3.14159"/>
+        <geometry>
+          <mesh filename="../meshes/dae/Cube.002.dae" scale="1.58283 1.0 0.63818"/>
+        </geometry>
+        <material name="Material.001"/>
+      </visual>
+    </link>
+
+    <link name="second_arm_engine">
+      <visual name="second_engine">
+        <origin xyz="0 0 0" rpy="-3.13359 0 0"/>
+        <geometry>
+          <cylinder radius="0.53716" length="6.2879"/>
+        </geometry>
+        <material name="Material.001"/>
+      </visual>
+    </link>
+
+    <joint name="first_arm" type="continuous">
+      <origin xyz="0 11.6368 -1.30813" rpy="1.5708 0 0"/>
+      <parent link="main_body"/>
+      <child link="new_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="50.0" velocity="3.141"/>
+    </joint>
+
+    <joint name="first_arm_engine" type="prismatic">
+      <origin xyz="-1.51227 -0.80458 -0.1504" rpy="-1.5708 0 0"/>
+      <parent link="new_link"/>
+      <child link="first_arm_engine"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="3.14" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="first_arm_rack" type="prismatic">
+      <origin xyz="0 11.6368 -1.30813" rpy="1.5708 0 0"/>
+      <parent link="new_link"/>
+      <child link="new_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="3.14" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="main_engine" type="prismatic">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="main_body"/>
+      <child link="main_engine"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="3.14" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="second_arm_engine" type="prismatic">
+      <origin xyz="1.39269 -0.76513 0.0239" rpy="-1.5708 0 0"/>
+      <parent link="new_link"/>
+      <child link="second_arm_engine"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="3.14" effort="0" velocity="0"/>
+    </joint>
+
+    <joint name="second_arm_rack" type="prismatic">
+      <origin xyz="0 11.6368 -1.30813" rpy="1.5708 0 0"/>
+      <parent link="main_body"/>
+      <child link="new_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="3.14" effort="0" velocity="0"/>
+    </joint>
+
+    <material name="Material">
+      <color rgba="0.8 0.8 0.8 1.0"/>
+    </material>
+
+    <material name="Material.001">
+      <color rgba="0.8 0.8 0.8 1.0"/>
+    </material>
+
+    <material name="Material.002">
+      <color rgba="0.8 0.8 0.8 1.0"/>
+    </material>
+
+  </robot>
